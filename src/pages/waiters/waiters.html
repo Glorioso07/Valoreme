@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-label *ngIf="waiters && waiters.length === 0 && hasResponse">No hay trabajadores disponibles para puntuar</ion-label>
+  <ion-item *ngFor="let waiter of waiters" (click)="selectedWaiter(waiter)">
+    <ion-avatar item-start>
+      <img src="{{waiter.photo}}">
+    </ion-avatar>
+    <h2>{{waiter.name}}</h2>
+  </ion-item>
+</ion-content>

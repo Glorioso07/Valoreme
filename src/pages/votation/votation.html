@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-avatar item-start>
+      <img src="{{waiter.photo}}">
+    </ion-avatar>
+    <h2>{{waiter.name}}</h2>
+  </ion-item>
+  <ion-icon *ngFor="let votation of votations" name="ios-star{{points < votation ? '-outline': ''}}" (click)="selectedVotation(votation)"></ion-icon>
+
+  <button ion-button [disabled]="points === 0" (click)="sendValoration()">Enviar valoración</button>
+</ion-content>
