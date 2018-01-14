@@ -39,8 +39,7 @@ export class VotationPage {
 	  	height: 400,
 	  	quality: 100
 		}).then((image) => {
-		  //image = 'data:image/jpeg;base64,' + image;
-		  this.sendRequest(image && image.length > 0 ? image[0] : null);
+		  this.sendRequest(image && image.length > 0 ? 'data:image/jpeg;base64,' + image[0] : null);
 		}, (error) => {
 			this.sendRequest(null);
 		});
