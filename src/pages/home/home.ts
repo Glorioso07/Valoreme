@@ -21,7 +21,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController, private cameraPreview: CameraPreview) {
   	this.presentLoadingDefault();
-  	this.http.get(Constants.URL + '/valoreme/restaurant/list')
+  	this.http.get(Constants.URL + '/resultados/restaurant/list')
 	  .map(res => res.json())
 	  .finally(
 	  	() => {

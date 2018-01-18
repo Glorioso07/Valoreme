@@ -1,17 +1,24 @@
+<!--
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      ValorEME
     </ion-title>
   </ion-navbar>
 </ion-header>
+-->
 
-<ion-content padding>
-  <ion-item>
-    <ion-label *ngIf="restaurants && restaurants.length > 0 && hasResponse">Elige restaurante</ion-label>
-    <ion-label *ngIf="restaurants && restaurants.length === 0 && hasResponse">Sin restaurantes para elegir</ion-label>
-    <ion-select *ngIf="restaurants && restaurants.length > 0" [(ngModel)]="idRestaurant" (ionChange)="selectedRestaurant()">
-      <ion-option *ngFor="let restaurant of restaurants" value="{{restaurant.id}}">{{restaurant.name}}</ion-option>
-    </ion-select>
-  </ion-item>
+<ion-content>
+  <div class="vertical">
+    <div class="align">
+      <h1>Seleccionar restaurante</h1>
+      <ion-item>
+        <ion-label *ngIf="restaurants && restaurants.length > 0 && hasResponse">Elige restaurante</ion-label>
+        <ion-label *ngIf="restaurants && restaurants.length === 0 && hasResponse">Sin restaurantes para elegir</ion-label>
+        <ion-select *ngIf="restaurants && restaurants.length > 0" [(ngModel)]="idRestaurant" (ionChange)="selectedRestaurant()">
+          <ion-option *ngFor="let restaurant of restaurants" value="{{restaurant.id}}">{{restaurant.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  </div>
 </ion-content>

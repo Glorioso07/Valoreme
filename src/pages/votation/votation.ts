@@ -16,39 +16,34 @@ export class VotationPage {
 
 	loading: any = null;
 	waiter: any = null;
-	votations: Array<number> = [1,2,3,4,5];
-	points: number = 0;
+	votations: Array<number> = [5,4,3,2,1];
 
   constructor(public navCtrl: NavController, private navParams: NavParams, public http: Http, public loadingCtrl: LoadingController, private cameraPreview: CameraPreview,
     private toastCtrl: ToastController) {
   	this.waiter = this.navParams.get('waiter');
   }
 
-  selectedVotation(points: number){
-  	this.points = points;
-  }
-
-  sendValoration(){
+  sendValoration(points: number){
   	this.presentLoadingDefault();
-  	this.getPicture();
+  	this.getPicture(points);
   }
 
-  getPicture(){
+  getPicture(points: number){
   	this.cameraPreview.takePicture({
 	  	width: 400,
 	  	height: 400,
 	  	quality: 100
 		}).then((image) => {
-		  this.sendRequest(image && image.length > 0 ? 'data:image/jpeg;base64,' + image[0] : null);
+		  this.sendRequest(points, image && image.length > 0 ? 'data:image/jpeg;base64,' + image[0] : null);
 		}, (error) => {
-			this.sendRequest(null);
+			this.sendRequest(points, null);
 		});
   }
 
-  sendRequest(image: string){
-    this.http.post(Constants.URL + '/valoreme/votation/waiter?idWaiter=' + this.waiter.id, 
+  sendRequest(points: number, image: string){
+    this.http.post(Constants.URL + '/resultados/votation/waiter?idWaiter=' + this.waiter.id, 
     JSON.stringify({
-      points: this.points,
+      points: points,
       photo: image
     }))
     .finally(
@@ -78,6 +73,10 @@ export class VotationPage {
   presentLoadingDefault() {
 		this.loading = this.loadingCtrl.create({});
 		this.loading.present();
+  }
+
+  goBack(){
+    this.navCtrl.pop();
   }
 
 }

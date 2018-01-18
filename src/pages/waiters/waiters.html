@@ -1,17 +1,24 @@
+<!-- 
 <ion-header>
   <ion-navbar hideBackButton>
     <ion-title>
-      Ionic Blank
+      ValorEME
     </ion-title>
   </ion-navbar>
 </ion-header>
+-->
 
-<ion-content padding>
-  <ion-label *ngIf="waiters && waiters.length === 0 && hasResponse">No hay trabajadores disponibles para puntuar</ion-label>
-  <ion-item *ngFor="let waiter of waiters" (click)="selectedWaiter(waiter)">
-    <ion-avatar item-start>
-      <img src="{{waiter.photo}}">
-    </ion-avatar>
-    <h2>{{waiter.name}}</h2>
-  </ion-item>
+<ion-content id="workers">
+  <div class="vertical">
+    <div class="align">
+      <h1>¿A quién desea valorar?</h1>
+      <ion-label *ngIf="waiters && waiters.length === 0 && hasResponse">No hay trabajadores disponibles para puntuar</ion-label>
+      <div class="worker" *ngFor="let waiter of waiters" (click)="selectedWaiter(waiter)">
+        <div class="avatar" item-start>
+          <img src="{{waiter.photo}}">
+        </div>
+        <h2>{{waiter.name}}</h2>
+      </div>
+    </div>
+  </div>
 </ion-content>

@@ -19,7 +19,7 @@ export class WaitersPage {
 
   constructor(public navCtrl: NavController, private navParams: NavParams, public http: Http, public loadingCtrl: LoadingController) {
   	this.presentLoadingDefault();
-  	this.http.get(Constants.URL + '/valoreme/restaurant/waiter?idRestaurant=' + this.navParams.get('idRestaurant'))
+  	this.http.get(Constants.URL + '/resultados/restaurant/waiter?idRestaurant=' + this.navParams.get('idRestaurant'))
 		  .map(res => res.json())
 		  .finally(
 		  	() => {

@@ -1,19 +1,30 @@
+<!-- 
 <ion-header>
-  <ion-navbar>
+  <ion-navbar hideBackButton>
     <ion-title>
-      Ionic Blank
+      ValorEME
     </ion-title>
   </ion-navbar>
 </ion-header>
+-->
 
-<ion-content padding>
-  <ion-item>
-    <ion-avatar item-start>
-      <img src="{{waiter.photo}}">
-    </ion-avatar>
-    <h2>{{waiter.name}}</h2>
-  </ion-item>
-  <ion-icon *ngFor="let votation of votations" name="ios-star{{points < votation ? '-outline': ''}}" (click)="selectedVotation(votation)"></ion-icon>
+<ion-content id="votation">
+  <div class="vertical">
+    <div class="align">
 
-  <button ion-button [disabled]="points === 0" (click)="sendValoration()">Enviar valoración</button>
+      <h1>Valorando a...</h1>
+      <div class="worker">
+        <div class="avatar" item-start>
+          <img src="{{waiter.photo}}">
+        </div>
+        <h2>{{waiter.name}}</h2>
+      </div>
+
+      <div class="rating">
+        <span class="back" (click)="goBack()"></span>
+        <ion-icon *ngFor="let votation of votations" name="ios-star{{points < votation ? '-outline': ''}}" (click)="sendValoration(votation)"></ion-icon>
+      </div>
+
+    </div>
+  </div>
 </ion-content>
