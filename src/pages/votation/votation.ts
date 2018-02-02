@@ -41,7 +41,7 @@ export class VotationPage {
   }
 
   sendRequest(points: number, image: string){
-    this.http.post(Constants.URL + '/resultados/votation/waiter?idWaiter=' + this.waiter.id, 
+    this.http.post(Constants.URL + '/votation/waiter?idWaiter=' + this.waiter.id, 
     JSON.stringify({
       points: points,
       photo: image

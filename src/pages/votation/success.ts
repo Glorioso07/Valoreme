@@ -8,9 +8,9 @@ import { NavController } from 'ionic-angular';
 export class VotationSuccessPage {
 
   constructor(public navCtrl: NavController) {
-  	/*setTimeout(() => {
+  	setTimeout(() => {
   		this.navCtrl.remove(2,2);
-    }, 2000);*/
+    }, 2000);
   }
   
 }
