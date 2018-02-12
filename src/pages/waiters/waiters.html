@@ -11,7 +11,10 @@
 <ion-content id="workers">
   <div class="vertical">
     <div class="align">
-      <h1>¿A quién desea valorar?</h1>
+      <h1>
+        ¿Satisfecho? Satisfied?
+        <img src="assets/imgs/caritas.gif" alt="¡Rate us!">
+      </h1>
       <ion-label *ngIf="waiters && waiters.length === 0 && hasResponse">No hay trabajadores disponibles para puntuar</ion-label>
       <div class="worker" *ngFor="let waiter of waiters" (click)="selectedWaiter(waiter)">
         <div class="avatar" item-start>
@@ -21,4 +24,5 @@
       </div>
     </div>
   </div>
+  <img id="scrollIndicator" src="assets/imgs/scroll-down.png" alt="¡Scroll Down!">
 </ion-content>
