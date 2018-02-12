@@ -47,7 +47,7 @@ export class HomePage {
 		  y: 0,
 		  width: window.screen.width,
 		  height: window.screen.height,
-		  camera: 'front',
+		  camera: 'back',
 		  tapPhoto: true,
 		  previewDrag: true,
 		  toBack: true,
