@@ -34,6 +34,7 @@ export class HomePage {
 	      this.restaurants = data;
 	    }
 	  );
+	this.http.post(Constants.URL + '/votation/start', undefined).subscribe(data => {});
   }
 
   selectedRestaurant(){

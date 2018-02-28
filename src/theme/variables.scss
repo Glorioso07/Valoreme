@@ -102,6 +102,9 @@ $colors: (
 
 }
 
+
+$break-desktop-large: 1280px;
+
 body {
 	* {
 		font-family: 'Nunito', Open Sans, sans-serif;
@@ -120,11 +123,15 @@ body {
 	}
 
 	h1 {
-		font-size: 72px;
+		font-size: 56px;
 		font-weight: bold;
 		color: #C9A96C;
 		text-align: center;
 		margin: 45px 0 90px;
+
+		@media screen and (min-width: $break-desktop-large) {
+			font-size: 72px;
+		}
 
 		&:after {
 			content: '';
@@ -154,6 +161,37 @@ body {
 	img {
 		display: block;
 		margin: 0 auto;
+	}
+
+	#claimImg {
+		display: block;
+		position: fixed;
+		z-index: 999;
+		top: 50%;
+		left: 50%;
+		width: 100vw;
+		height: 100vh;
+		transition: .3s all ease;
+		pointer-events: none;
+		opacity: 0;
+		transform: translate(-50%,-50%) scale(.5);
+		background-color: white;
+
+		img {
+			width: 100%;
+			height: auto;
+			margin: auto;
+		}
+	}
+
+	.scroll-content.visible {
+		overflow: hidden;
+
+		#claimImg {
+			opacity: 1;
+			transform: translate(-50%,-50%) scale(1);
+			pointer-events: auto;
+		}
 	}
 
 	/* Pantalla restaurantes */
@@ -239,7 +277,7 @@ body {
 	/* Pantalla votación */
 	#votation {
 		.vertical {
-			max-width: 60%;
+			max-width: 80%;
 
 			.align {
 				h1 {
@@ -261,11 +299,20 @@ body {
 						display: inline-block;
 						background: url('../assets/imgs/back.png') no-repeat center center scroll transparent;
 						background-size: 100% auto;
-						width: 120px;
-						height: 120px;
+						width: 80px;
+						height: 80px;
 
 						&:not(:last-child) {
-							margin-right: 45px;
+							margin-right: 25px;
+						}
+
+						@media screen and (min-width: $break-desktop-large) {
+							width: 120px;
+							height: 120px;
+
+							&:not(:last-child) {
+								margin-right: 45px;
+							}
 						}
 					}
 
