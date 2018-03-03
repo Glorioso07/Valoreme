@@ -18,6 +18,8 @@ export class HomePage {
 	hasResponse: boolean = false;
 	restaurants: any = [];
 	idRestaurant: string = null;
+	directionFront: string = 'front';
+	directionBack: string = 'back';
 
   constructor(public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController, private cameraPreview: CameraPreview) {
   	this.presentLoadingDefault();
@@ -38,27 +40,30 @@ export class HomePage {
   }
 
   selectedRestaurant(){
-  	this.startCamera();
+  	this.startCamera(this.directionFront);
   	this.navCtrl.push(WaitersPage, {idRestaurant:this.idRestaurant});
   }
 
-  startCamera(){
+  startCamera(direction){
   	this.cameraPreview.startCamera({
-		  x: 0,
-		  y: 0,
-		  width: window.screen.width,
-		  height: window.screen.height,
-		  camera: 'back',
-		  tapPhoto: true,
-		  previewDrag: true,
-		  toBack: true,
-		  alpha: 1
-		}).then(
-		  (res) => {
-		  },
-		  (error) => {
-		});
-	}
+	  x: 0,
+	  y: 0,
+	  width: window.screen.width,
+	  height: window.screen.height,
+	  camera: direction,
+	  tapPhoto: true,
+	  previewDrag: true,
+	  toBack: true,
+	  alpha: 1
+	}).then(
+	  (res) => {
+	  },
+	  (error) => {
+	  	if(direction !== this.directionBack){
+	  		this.startCamera(this.directionBack);
+	  	}
+	});
+  }
 
   presentLoadingDefault() {
 	  this.loading = this.loadingCtrl.create({});
