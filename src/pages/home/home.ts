@@ -45,24 +45,30 @@ export class HomePage {
   }
 
   startCamera(direction){
-  	this.cameraPreview.startCamera({
-	  x: 0,
-	  y: 0,
-	  width: window.screen.width,
-	  height: window.screen.height,
-	  camera: direction,
-	  tapPhoto: true,
-	  previewDrag: true,
-	  toBack: true,
-	  alpha: 1
-	}).then(
-	  (res) => {
-	  },
-	  (error) => {
-	  	if(direction !== this.directionBack){
+  	try {
+  		this.cameraPreview.startCamera({
+		  x: 0,
+		  y: 0,
+		  width: window.screen.width,
+		  height: window.screen.height,
+		  camera: direction,
+		  tapPhoto: true,
+		  previewDrag: true,
+		  toBack: true,
+		  alpha: 1
+		}).then(
+		  (res) => {
+		  },
+		  (error) => {
+		  	if(direction !== this.directionBack){
+		  		this.startCamera(this.directionBack);
+		  	}
+		});
+	}catch (e){
+	    if(direction !== this.directionBack){
 	  		this.startCamera(this.directionBack);
 	  	}
-	});
+	}
   }
 
   presentLoadingDefault() {
